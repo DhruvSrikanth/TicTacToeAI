@@ -1,8 +1,7 @@
 import random
 
 class TicTacToeBot:
-
-    def __init__(self, game):
+    def __init__(self):
         self.remaining_moves = None
         self.bot_symbol = None
     
