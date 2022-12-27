@@ -1,5 +1,5 @@
-from .engine import TicTacToe
-from .bot import TicTacToeBot
+from engine import TicTacToe
+from bot import TicTacToeBot
 
 if __name__ == '__main__':
     # creating a new game

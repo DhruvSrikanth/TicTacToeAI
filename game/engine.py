@@ -4,7 +4,7 @@ class TicTacToe:
     def __init__(self):
         self.board = self.create_board()
         
-    def create_board():
+    def create_board(self):
         board = []
         for _ in range(3):
             row = []
@@ -84,36 +84,39 @@ class TicTacToe:
         bot.update_bot_symbol(player_symbol if bot_move else self.swap_player_turn(player_symbol))
 
         while True:
-            print("\nCurrent view of board: ")
+            print("-" * 25)
+            print("Board:")
             self.show_board()
 
             if bot_move:
-                print("\nBot's turn - ")
                 # bot's turn
-                row, col = bot.get_move(self.board, player_symbol)
+                row, col = bot.get_move(self.board)
+                print(f"T played {player_symbol} at {row}, {col}.")
             else:
-                print("\nYour turn - ")
                 # your turn
                 # taking user input
                 row, col = list(
-                    map(int, input("Enter row and column numbers to fix spot: ").split())
+                    map(int, input("Enter row and column: ").split())
                 )
                 print()
+            print("-" * 25)
             
             # fixing the spot
             self.fix_spot(row - 1, col - 1, player_symbol)
 
             # checking whether current player is won or not
             if self.is_player_win(player_symbol):
+                print("-" * 25)
                 if bot_move:
-                    print("Bot won!")
+                    print(f"Bot {player_symbol} won!")
                 else:
-                    print("You won!")
+                    print(f"You {player_symbol} won!")
                 break
 
             # checking whether the game is draw or not
             if self.is_board_filled():
-                print("Match draw!")
+                print("-" * 25)
+                print("Draw!")
                 break
 
             # swapping the turn
@@ -121,6 +124,7 @@ class TicTacToe:
             bot_move = not bot_move
 
         # showing the final view of board
-        print("\nFinal view of board: ")
+        print("Final Board:")
         self.show_board()
+        print("-" * 25)
 

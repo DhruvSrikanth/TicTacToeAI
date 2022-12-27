@@ -11,10 +11,10 @@ class TicTacToeBot:
 
     def get_move(self, board):
         while True:
-            row = random.randint(1, 3)
-            col = random.randint(1, 3)
+            row = random.randint(0, 2)
+            col = random.randint(0, 2)
             if board[row][col] == '-':
                 self.remaining_moves -= 1  
-                return row, col
+                return row + 1, col + 1
 
               
