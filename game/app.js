@@ -106,5 +106,14 @@ const reset_board = () => {
   render_board();
 };
 
-//initial render
-render_board();
+
+
+const start_game = () => {
+  //initial render
+  render_board();
+  // Randomly determine who goes first
+  if (Math.random() <= 0.5) {
+    addComputerMove();
+  }
+};
+
