@@ -11,7 +11,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: #eee;
+    background: rgb(255,253,208);
   }
   
   h1 {

@@ -1,5 +1,5 @@
-const player = "O";
-const computer = "X";
+let player = "O";
+let computer = "X";
 
 let board_full = false;
 let play_board = ["", "", "", "", "", "", "", "", ""];
@@ -104,17 +104,26 @@ const reset_board = () => {
   winner.classList.remove("draw");
   winner.innerText = "";
   render_board();
+  determine_p1();
 };
 
-
+const determine_p1 = () => {
+  // Randomly determine who goes first
+  const first_move = Math.random()
+  if (first_move < 0.5) {
+    computer = "O";
+    player = "X";
+    addComputerMove();
+  } else {
+    computer = "X";
+    player = "O";
+  }
+};
 
 const start_game = () => {
   //initial render
   render_board();
-  // Randomly determine who goes first
-  if (Math.random() <= 0.5) {
-    addComputerMove();
-  }
+  determine_p1();
 };
 
 // Start the game
