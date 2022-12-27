@@ -1,8 +1,11 @@
 import random
-
+from bot import TicTacToeBot
 class TicTacToe:
-    def __init__(self):
+    def __init__(self, n_players):
         self.board = self.create_board()
+        self.n_players = n_players
+        if n_players > 1:
+            raise ValueError("Only 1 or 0 players allowed.")
         
     def create_board(self):
         board = []
@@ -82,6 +85,12 @@ class TicTacToe:
         player_symbol = 'O'
         bot_move = bool(self.determine_p1())
         bot.update_bot_symbol(player_symbol if bot_move else self.swap_player_turn(player_symbol))
+        
+        if self.n_players == 0:
+            other_bot_symbol = 'X' if player_symbol == 'O' else 'O'
+            other_bot = TicTacToeBot()
+            other_bot.update_bot_symbol(other_bot_symbol)
+
 
         while True:
             print("-" * 25)
@@ -94,11 +103,15 @@ class TicTacToe:
                 print(f"T played {player_symbol} at {row}, {col}.")
             else:
                 # your turn
-                # taking user input
-                row, col = list(
-                    map(int, input("Enter row and column: ").split())
-                )
-                print()
+                if self.n_players == 0:
+                    row, col = other_bot.get_move(self.board)
+                    print(f"T-op played {player_symbol} at {row}, {col}.")
+                else:
+                    # taking user input
+                    row, col = list(
+                        map(int, input("Enter row and column: ").split())
+                    )
+                    print()
             print("-" * 25)
             
             # fixing the spot
