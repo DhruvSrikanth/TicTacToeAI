@@ -1,8 +1,8 @@
 # Python version
 PYTHON = python3
 
-# Path to the game directory
-GAME_DIR = game
+# Path to the sim directory
+SIM_DIR = sim
 
-tictactoe:
-	$(PYTHON) $(GAME_DIR)/main.py
+sim:
+	$(PYTHON) $(SIM_DIR)/main.py
