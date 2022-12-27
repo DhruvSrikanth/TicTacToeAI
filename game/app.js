@@ -117,3 +117,5 @@ const start_game = () => {
   }
 };
 
+// Start the game
+start_game();
